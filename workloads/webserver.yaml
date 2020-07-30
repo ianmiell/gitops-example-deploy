@@ -21,6 +21,8 @@ spec:
             - python
             - -m
             - http.server
+      imagePullSecrets:
+        - name: regcred
 ---
 # https://kubernetes.io/docs/concepts/services-networking/service/
 apiVersion: v1
