@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: debug-network-pod
-  namespace: example-gitops-deploy
+  namespace: example-gitops
 spec:
   containers:
     - command:
