@@ -16,4 +16,4 @@ jobs:
     steps:
       - name: install kubectl
         run: |
-          echo test
+          echo test && echo ${{ github.event }}
