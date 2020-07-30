@@ -20,4 +20,4 @@ jobs:
     steps:
       - name: install kubectl
         run: |
-          echo test && echo ${{ github.event.repository_dispatch }}
+          echo test && echo ${{ github.event }} && ${{ github.event_path }}
