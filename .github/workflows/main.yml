@@ -23,7 +23,7 @@ jobs:
           sudo apt upgrade && sudo apt install -y curl && curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x kubectl && sudo mv kubectl /usr/local/bin
       - name: set up kubectl config
         run: |
-          mkdir -p /home/runner/.kube && echo "${EXAMPLE_GITOPS_DEPLOY_KUBECTL}" > /home/runner/.kube/config && echo ~ && cat /home/runner/.kube/config && echo ~
+          mkdir -p /home/runner/.kube && echo "${{ secrets.EXAMPLE_GITOPS_DEPLOY_KUBECTL}}" > /home/runner/.kube/config && echo ~ && cat /home/runner/.kube/config && echo ~
       - name: check kubectl config
         run: |
           kubectl cluster-info
