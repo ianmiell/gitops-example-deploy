@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: update version in checked-out code
+      - name: Update Version In Checked-Out Code
         if: ${{ github.event.client_payload.image }}
         run: |
           sed -i "s@\(.*image:\).*@\1 ${{ github.event.client_payload.image }}@" ${GITHUB_WORKSPACE}/workloads/webserver.yaml
