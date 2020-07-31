@@ -20,9 +20,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: log info
+      #- name: log info
+      #  run: |
+      #    echo $GITHUB_WORKSPACE && echo ${{ github.event.client_payload.image }} && echo "$(date): ${{ github.event.client_payload.image }}"
+
+      - name: update version
         run: |
-          echo $GITHUB_WORKSPACE && echo ${{ github.event.client_payload.image }} && echo "$(date): ${{ github.event.client_payload.image }}" >> ${GITHUB_WORKSPACE}/CHANGE_LOG.md
+          sed -i "s/\(.*image:.*\)/\1 ${{ github.event.client_payload.image }}" $GITHUB_WORKSPACE/workloads/webserver.yaml
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         if: ${{ github.event.client_payload.image }}
@@ -38,7 +42,7 @@ jobs:
           # See the `pathspec`-documentation for git
           # - https://git-scm.com/docs/git-add#Documentation/git-add.txt-ltpathspecgt82308203
           # - https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
-          file_pattern: CHANGE_LOG.md
+          #file_pattern: *.js
           # Optional local file path to the repository
           repository: .
           # Optional commit user and author settings
