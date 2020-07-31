@@ -6,12 +6,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Check Out The Repository
+        uses: actions/checkout@v2
       - name: Update Version In Checked-Out Code
         if: ${{ github.event.client_payload.image }}
         run: |
           sed -i "s@\(.*image:\).*@\1 ${{ github.event.client_payload.image }}@" ${GITHUB_WORKSPACE}/workloads/webserver.yaml
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Commit The New Image Reference
+        uses: stefanzweifel/git-auto-commit-action@v4
         if: ${{ github.event.client_payload.image }}
         with:
           commit_message: Deploy new image ${{ github.event.client_payload.image }}
