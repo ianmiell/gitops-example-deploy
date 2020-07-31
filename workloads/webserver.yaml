@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver-simple-deployment
+  name: example-gitops-deployment
   namespace: example-gitops
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: webserver-simple-app
+      app: example-gitops-app
   template:
     metadata:
       labels:
-        app: webserver-simple-app
+        app: example-gitops-app
     spec:
       containers:
-        - name: webserver-simple-container
+        - name: example-gitops-container
           image: docker.pkg.github.com/ianmiell/example-gitops-app/example-gitops-app:dd231b980eaa
           command:
             - python
@@ -23,16 +23,15 @@ spec:
             - http.server
       imagePullSecrets:
         - name: regcred
----
 # https://kubernetes.io/docs/concepts/services-networking/service/
 apiVersion: v1
 kind: Service
 metadata:
-  name: webserver-simple-service
+  name: example-gitops-service-service
   namespace: example-gitops
 spec:
   selector:
-    app: webserver-simple-app
+    app: example-gitops-app
   ports:
     - protocol: TCP
       port: 80
