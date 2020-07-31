@@ -25,8 +25,9 @@ jobs:
       #    echo $GITHUB_WORKSPACE && echo ${{ github.event.client_payload.image }} && echo "$(date): ${{ github.event.client_payload.image }}"
 
       - name: update version
+        if: ${{ github.event.client_payload.image }}
         run: |
-          sed -i "s/\(.*image:.*\)/\1 ${{ github.event.client_payload.image }}" $GITHUB_WORKSPACE/workloads/webserver.yaml
+          sed -i "s/\(.*image:.*\)/\1 ${{ github.event.client_payload.image }}/" ${GITHUB_WORKSPACE}/workloads/webserver.yaml
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         if: ${{ github.event.client_payload.image }}
