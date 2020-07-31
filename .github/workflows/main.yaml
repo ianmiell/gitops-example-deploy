@@ -18,6 +18,37 @@ jobs:
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: get info
+      - uses: actions/checkout@v2
+
+      - name: log info
         run: |
-          echo test && echo ${{ github.event }} && env && echo ${{ github.event.client_payload.image }}
+          echo $GITHUB_WORKSPACE && echo ${{ github.event.client_payload.image }} && echo ${{ github.event.client_payload.image }} >>
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        if: ${{ github.event.client_payload.image }}
+        with:
+          # Required
+          commit_message: Deploy new image ${{ github.event.client_payload.image }}
+          # Optional branch to push to, defaults to the current branch
+          branch: main
+          # Optional options appended to `git-commit`
+          # See https://git-scm.com/docs/git-commit for a list of available options
+          commit_options: '--no-verify --signoff'
+          # Optional glob pattern of files which should be added to the commit
+          # See the `pathspec`-documentation for git
+          # - https://git-scm.com/docs/git-add#Documentation/git-add.txt-ltpathspecgt82308203
+          # - https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
+          file_pattern: CHANGE_LOG.md
+          # Optional local file path to the repository
+          repository: .
+          # Optional commit user and author settings
+          commit_user_name: Example GitOps Bot
+          commit_user_email: example-gitops-bot@container-solutions.com
+          commit_author: Example GitOps Bot <example-gitops-bot@container-solutions.com>
+          # Optional tag message
+          # Action will create and push a new tag to the remote repository and the defined branch
+          #tagging_message: 'v1.0.0'
+          # Optional options appended to `git-push`
+          #push_options: '--force'
+          # Optional: Disable dirty check and always try to create a commit and push
+          #skip_dirty_check: true
