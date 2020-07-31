@@ -22,7 +22,7 @@ jobs:
 
       - name: log info
         run: |
-          echo $GITHUB_WORKSPACE && echo ${{ github.event.client_payload.image }} && echo ${{ github.event.client_payload.image }} >>
+          echo $GITHUB_WORKSPACE && echo ${{ github.event.client_payload.image }} && echo "$(date): ${{ github.event.client_payload.image }}" >> ${GITHUB_WORKSPACE}/CHANGE_LOG.md
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         if: ${{ github.event.client_payload.image }}
