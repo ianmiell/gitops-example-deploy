@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: webserver-simple-container
-          image: docker.pkg.github.com/ianmiell/example-gitops-app/example-gitops-app:41bffac2695b
+          image: docker.pkg.github.com/ianmiell/example-gitops-app/example-gitops-app:fb8e84d42cdb
           command:
             - python
             - -m
