@@ -1,3 +1,3 @@
 # Example GitOps Deploy
 
-See [here](https://github.com/ianmiell/example-gitops) for documentation.
+See [here](https://github.com/ianmiell/gitops-example) for documentation.
