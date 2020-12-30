@@ -1,7 +1,7 @@
 name: Update Image Reference
 on:
   repository_dispatch:
-    types: example-gitops-app-trigger
+    types: gitops-example-app-trigger
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,5 +21,5 @@ jobs:
           commit_options: '--no-verify --signoff'
           repository: .
           commit_user_name: Example GitOps Bot
-          commit_user_email: example-gitops-bot@container-solutions.com
-          commit_author: Example GitOps Bot <example-gitops-bot@container-solutions.com>
+          commit_user_email: gitops-example-bot@container-solutions.com
+          commit_author: Example GitOps Bot <gitops-example-bot@container-solutions.com>
