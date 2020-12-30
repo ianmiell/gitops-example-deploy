@@ -23,7 +23,7 @@ spec:
             - -m
             - http.server
           ports:
-            containerPort: 8000
+            - containerPort: 8000
       imagePullSecrets:
         - name: regcred            # These are the creds we set up by hand earlier.
 ---
