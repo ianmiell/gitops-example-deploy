@@ -9,9 +9,9 @@ jobs:
       - name: Check Out The Repository
         uses: actions/checkout@v2
       - name: Update Version In Checked-Out Code
-        if: ${{ github.event.client_payload.image }}
+        if: ${{ github.event.client_payload.sha }}
         run: |
-          sed -i "s@\(.*image:\).*@\1 ${{ github.event.client_payload.image }}@" ${GITHUB_WORKSPACE}/workloads/webserver.yaml
+          sed -i "s@\(.*image:\).*@\1 ${{ github.event.client_payload.sha }}@" ${GITHUB_WORKSPACE}/workloads/webserver.yaml
       - name: Commit The New Image Reference
         uses: stefanzweifel/git-auto-commit-action@v4
         if: ${{ github.event.client_payload.image }}
