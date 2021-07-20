@@ -17,8 +17,8 @@ spec:
       containers:
         - name: gitops-example-container
           # This is the line that gets update automatically by the GitHub action in gitops-example-app
-          #image: docker.pkg.github.com/ianmiell/gitops-example-app/gitops-example-app:58263ea32872
-          image: docker.pkg.github.com/ianmiell/gitops-example-app/gitops-example-app:latest
+          #image: docker.pkg.github.com/ianmiell/gitops-example-app/gitops-example-app:7780080d3beb
+          image: docker.pkg.github.com/ianmiell/gitops-example-app/gitops-example-app:7780080d3beb
           command:
             - python
             - -m
