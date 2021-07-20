@@ -13,7 +13,7 @@ jobs:
       - name: Update Version In Checked-Out Code
         if: ${{ github.event.client_payload.sha }}
         run: |
-          sed -i "s@\(.*image:\).*@\1 docker.io/imiell/gitops-deploy-app:${{ github.event.client_payload.sha }}@" ${GITHUB_WORKSPACE}/workloads/webserver.yaml
+          sed -i "s@\(.*image:\).*@\1 docker.io/imiell/gitops-example-app:${{ github.event.client_payload.sha }}@" ${GITHUB_WORKSPACE}/workloads/webserver.yaml
       - name: Commit The New Image Reference
         uses: stefanzweifel/git-auto-commit-action@v4
         if: ${{ github.event.client_payload.sha }}
