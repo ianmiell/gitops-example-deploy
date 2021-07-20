@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Check Out The Repository
         uses: actions/checkout@v2
+      - name: echo
+        run: echo ${{ github.event.client_payload.sha }}
       - name: Update Version In Checked-Out Code
         if: ${{ github.event.client_payload.sha }}
         run: |
