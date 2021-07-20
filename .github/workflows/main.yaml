@@ -16,9 +16,9 @@ jobs:
           sed -i "s@\(.*image:\).*@\1 ${{ github.event.client_payload.sha }}@" ${GITHUB_WORKSPACE}/workloads/webserver.yaml
       - name: Commit The New Image Reference
         uses: stefanzweifel/git-auto-commit-action@v4
-        if: ${{ github.event.client_payload.image }}
+        if: ${{ github.event.client_payload.sha }}
         with:
-          commit_message: Deploy new image ${{ github.event.client_payload.image }}
+          commit_message: Deploy new image ${{ github.event.client_payload.sha }}
           branch: main
           commit_options: '--no-verify --signoff'
           repository: .
